@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ebook Library — Ebook Reader</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <header class="topbar" role="banner">
+    <div class="brand">
+      <span class="brand-badge" aria-hidden="true">🐐</span>
+      <div class="brand-text">
+        <div class="brand-title">Ebook Library</div>
+        <div class="brand-subtitle">Professional Ebook Reader</div>
+      </div>
+    </div>
+
+    <div class="top-actions" aria-label="Upload section">
+      <label class="upload-btn" for="pdfUpload">
+        <span class="upload-icon" aria-hidden="true">⬆️</span>
+        <span>Upload PDF</span>
+      </label>
+      <input id="pdfUpload" class="sr-only" type="file" accept="application/pdf" />
+    </div>
+  </header>
+
+  <main id="content" class="layout" role="main">
+    <aside class="sidebar" aria-label="Library">
+      <div class="card">
+        <div class="card-head">
+          <h2 class="card-title">Library</h2>
+          <div class="card-meta" id="libraryCount">0 books</div>
+        </div>
+
+        <div class="card-subhead">Select a PDF to preview</div>
+
+        <div class="filters" aria-label="Quick filters">
+          <button type="button" class="chip is-active" data-filter="all">All</button>
+          <button type="button" class="chip" data-filter="default">Default</button>
+          <button type="button" class="chip" data-filter="uploaded">Uploaded</button>
+        </div>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <ul id="bookList" class="book-list" role="listbox" aria-label="PDF list"></ul>
+
+        <div id="emptyState" class="empty" hidden>
+          <div class="empty-illustration" aria-hidden="true">📚</div>
+          <div class="empty-title">No PDFs found</div>
+          <div class="empty-desc">Upload a PDF to add it to your library.</div>
+        </div>
+      </div>
+
+      <div class="footnote">
+        <div class="footnote-row">Tip: Use the search box to quickly find a title.</div>
+        <div class="footnote-row small">Search is client-side only.</div>
+      </div>
+    </aside>
+
+    <section class="viewer" aria-label="PDF preview">
+      <div class="viewer-card card">
+        <div class="viewer-head">
+          <div class="viewer-title-block">
+            <h2 id="viewerTitle" class="viewer-title">Select a book</h2>
+            <div id="viewerSubtitle" class="viewer-subtitle">Your PDF will appear here.</div>
+          </div>
+
+          <div class="viewer-actions">
+            <button id="downloadBtn" class="btn" type="button" disabled>
+              <span aria-hidden="true">⬇️</span>
+              <span>Download</span>
+            </button>
+            <button id="openBtn" class="btn btn-secondary" type="button" disabled>
+              <span aria-hidden="true">↗️</span>
+              <span>Open</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="searchbar" aria-label="Search">
+          <input id="searchInput" type="search" placeholder="Search by title..." autocomplete="off" />
+        </div>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <div id="viewerStatus" class="status" role="status" aria-live="polite">
+          <div class="skeleton skeleton-title"></div>
+          <div class="skeleton skeleton-line"></div>
+        </div>
+
+        <div id="viewerWrap" class="viewer-wrap" hidden>
+          <iframe
+            id="pdfFrame"
+            class="pdf-frame"
+            title="PDF Preview"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          ></iframe>
+        </div>
+
+        <div id="fallback" class="fallback" hidden>
+          <div class="fallback-title">Preview not available</div>
+          <div class="fallback-desc">Your browser blocked embedded previews. Use “Open” or “Download”.</div>
+        </div>
+      </div>
+
+      <div class="about">
+        <div class="about-card">
+          <div class="about-head">
+            <div class="about-icon" aria-hidden="true">⚡</div>
+            <div>
+              <div class="about-title">Fast + Clean</div>
+              <div class="about-desc">A professional, responsive ebook experience.</div>
+            </div>
+          </div>
+          <div class="about-grid">
+            <div class="about-item">
+              <div class="about-kpi">🧠</div>
+              <div class="about-label">Client-side library</div>
+              <div class="about-small">Uploaded PDFs work instantly.</div>
+            </div>
+            <div class="about-item">
+              <div class="about-kpi">🖥️</div>
+              <div class="about-label">Responsive layout</div>
+              <div class="about-small">Works on phone, tablet, desktop.</div>
+            </div>
+            <div class="about-item">
+              <div class="about-kpi">🎯</div>
+              <div class="about-label">Keyboard-friendly</div>
+              <div class="about-small">Accessible focus and actions.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div id="footerDate" class="footer-date">—</div>
+      <div class="footer-right">
+        <span class="dot" aria-hidden="true">•</span>
+        <span id="footerTime">—</span>
+        <span class="dot" aria-hidden="true">•</span>
+        <span>© <span id="footerYear"></span> Ebook Library</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
